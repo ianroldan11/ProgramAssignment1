@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+body, html {
+  height: 100%;
+}
+
+.parallax { 
+  /* Create the parallax scrolling effect */
+  height: auto; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5%;
+}
