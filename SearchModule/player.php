@@ -173,7 +173,7 @@ class Player{
             </div>
             <!-- col for logo -->
             <div class='col-sm-6' >
-              <img src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='portrait' style='height: 100%'>
+              <img src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='portrait' style='height: auto; width: 100%'>
             </div>
           </div>
         </div>
