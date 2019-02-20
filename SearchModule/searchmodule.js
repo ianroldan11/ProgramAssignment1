@@ -13,10 +13,19 @@ function startServerConnection(searchedName){
         if (this.readyState == 4 && this.status == 200) {
        	  //inserts results based on the text that main.php echoed
           insertResults(this.responseText);
+          twttr.widgets.load();
         }
     }
     // passes name to be querried to main php to be executed
     xmlhttp.open("GET", "main.php?playername=" + searchedName, true);
     xmlhttp.send();
   }
+}
+
+function alertWindow(message){
+  window.alert(message);
+}
+
+function setTwitterRefLink(refLink){
+  document.getElementById('twitterModalRef').href = refLink; 
 }

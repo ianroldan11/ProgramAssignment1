@@ -32,6 +32,7 @@ class Player{
 	private $ppg;
 
   private $espnID;
+  private $backgroundPicture;
 
 	public function __construct($playerInfoArray){
 		$this->id = $playerInfoArray['id'];
@@ -67,6 +68,7 @@ class Player{
 		$this->ppg = $playerInfoArray['PPG'];
 
     $this->espnID = $playerInfoArray['espnID'];
+    $this->backgroundPicture = $playerInfoArray['backgroundPicture'];
 	}
 
 	public function getID(){
@@ -152,6 +154,9 @@ class Player{
   public function getespnID(){
     return $this->espnID;
   }
+  public function getBackgroundPicture(){
+    return $this->backgroundPicture;
+  }
 
   public function lowerCaseTeam(){
     return strtolower($this->team);
@@ -161,7 +166,7 @@ class Player{
 	public function echoDetails(){
     $teamLogoIdentifier =  $this->lowerCaseTeam();
 		return "<!-- 1 thin container per player -->
-    <div class='container-fluid parallax' style='background-image:url(\"images/lebronsamplebg.png\");'>
+    <div class='container-fluid parallax' style='background-image:url(\"images/backgrounds/$this->backgroundPicture\");'>
       <div class='thincontainer' style='height: 80%;'>
 
         <!-- container for picture -->      
@@ -169,18 +174,18 @@ class Player{
           <div class='row'>
             <!-- col for protrait -->
             <div class='col-sm-6'>
-              <img src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/$this->espnID.png&w=350&h=254' class='img-fluid rounded-circle shadow-lg' alt='portrait' style='height: 100%; width: auto; object-fit: cover;'>
+              <img title='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/$this->espnID.png&w=350&h=254' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/$this->espnID.png&w=350&h=254' class='img-fluid rounded-circle shadow-lg' alt='portrait' style='height: 100%; width: auto; object-fit: cover;'>
             </div>
             <!-- col for logo -->
             <div class='col-sm-6' >
-              <img src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='portrait' style='height: auto; width: 100%'>
+              <img title='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='portrait' style='height: 100%'>
             </div>
           </div>
         </div>
 
         <!-- container for name -->
         <div class='container mb-3 shadowed border border-dark' style='text-align: center;'>
-          <h5 class='display-4 text-white' style='margin: auto'><strong>$this->firstName $this->lastName</strong></h5>
+          <h5 id='lebron' class='display-4 text-white' style='margin: auto'><strong>$this->firstName $this->lastName</strong></h5>
         </div>
 
         <!-- container for top subdetails -->
@@ -296,69 +301,111 @@ class Player{
         <!-- twitter -->
         <!-- youtube -->
 
-        <div id='accordion'>
+        <!-- Start collapse -->
+        <div id='accordion$this->id'>
           <div class='card'>
             <div class='card-header' style='background-color: black'>
-              <a class='card-link' data-toggle='collapse' href='#collapseOne'>
-                Pictures of $this->lastName
-              </a>
-            </div>
-            <div id='collapseOne' class='collapse show' data-parent='#accordion'>
-              <div class='card-body'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-            </div>
-          </div>
-
-          <div class='card'>
-            <div class='card-header' style='background-color: black'>
-              <a class='collapsed card-link' data-toggle='collapse' href='#collapseTwo'>
-                Tweets about $this->lastName
-              </a>
-            </div>
-            <div id='collapseTwo' class='collapse' data-parent='#accordion'>
-              <div class='card-body'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-            </div>
-          </div>
-
-          <div class='card'>
-            <div class='card-header' style='background-color: black'>
-              <a class='collapsed card-link' data-toggle='collapse' href='#collapseThree'>
+              <a class='card-link' data-toggle='collapse' href='#collapseOne$this->id'>
                 Youtube Videos of $this->lastName
               </a>
             </div>
-            <div id='collapseThree' class='collapse' data-parent='#accordion'>
+            <div id='collapseOne$this->id' class='collapse show' data-parent='#accordion$this->id'>
               <div class='card-body'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- Start Carousel -->
+                <div id='videoCarou$this->id' class='carousel slide' data-ride='carousel'>                
+                  
+                  <!-- The slideshow -->
+                  <div class='carousel-inner'>
+                    <div class='carousel-item active'>
+
+                      <div class='embed-responsive embed-responsive-16by9'>
+                        <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
+                      </div>
+                      
+                    </div>
+                    <div class='carousel-item'>
+
+                      <div class='embed-responsive embed-responsive-16by9'>
+                        <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
+                      </div>
+                     
+                    </div>                    
+                  </div>
+                  
+                  <!-- Left and right controls -->
+                  <a class='carousel-control-prev' href='#videoCarou$this->id' data-slide='prev'>
+                    <span class='carousel-control-prev-icon'></span>
+                  </a>
+                  <a class='carousel-control-next' href='#videoCarou$this->id' data-slide='next'>
+                    <span class='carousel-control-next-icon'></span>
+                  </a>
+                </div>
+                <!-- End Carousel -->
+
               </div>
             </div>
           </div>
 
-        </div>
+          <div class='card'>
+            <div class='card-header' style='background-color: black'>
+              <a class='collapsed card-link' data-toggle='collapse' href='#collapseTwo$this->id'>
+                Tweets about $this->lastName
+              </a>
+            </div>
+            <div id='collapseTwo$this->id' class='collapse' data-parent='#accordion$this->id'>
+              <div class='card-body'>
+                <a class='twitter-timeline' data-height='800' data-theme='dark' href='https://twitter.com/StephenCurry30?ref_src=twsrc%5Etfw'>Tweets by StephenCurry30</a>              
+              </div>
+            </div>
+          </div>
 
+          <div class='card'>
+            <div class='card-header' style='background-color: black'>
+              <a class='collapsed card-link' data-toggle='collapse' href='#collapseThree$this->id'>
+                Pictures of $this->lastName
+              </a>
+            </div>
+            <div id='collapseThree$this->id' class='collapse' data-parent='#accordion$this->id'>
+              <div class='card-body'>
+
+              <!-- Start Carousel -->
+                <div id='pictureCarou$this->id' class='carousel slide' data-ride='carousel'>                
+                  
+                  <!-- The slideshow -->
+                  <div class='carousel-inner'>
+                    <div class='carousel-item active'>
+
+                      <img src='images/backgrounds/wade.jpg' alt='Los Angeles' width='1100' height='500'>
+                      
+                    </div>
+                    <div class='carousel-item'>
+
+                       <img src='images/backgrounds/drummond.jpg' alt='Los Angeles' width='1100' height='500'>
+                     
+                    </div>                    
+                  </div>
+                  
+                  <!-- Left and right controls -->
+                  <a class='carousel-control-prev' href='#pictureCarou$this->id' data-slide='prev'>
+                    <span class='carousel-control-prev-icon'></span>
+                  </a>
+                  <a class='carousel-control-next' href='#pictureCarou$this->id' data-slide='next'>
+                    <span class='carousel-control-next-icon'></span>
+                  </a>
+                </div>
+                <!-- End Carousel -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Collapses -->       
 
       </div>
     </div>
-    
     <div class='container whitespace'></div>";
 	}
-} 
+}
 
 ?>

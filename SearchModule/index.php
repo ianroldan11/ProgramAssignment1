@@ -2,6 +2,7 @@
 <html lang="en-US">
   <head>
     <!-- Javascript for AJAX -->
+    <script src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>
     <script src="searchmodule.js"></script>
     <meta charset="UTF-8">
     <!-- Dynamic Scaling -->
@@ -38,7 +39,7 @@
     <!-- Form group for search bar -->
     <div class="container">
       <form class="form-group">
-        <label for="searchbar" class="text-white-50"><strong>Search for a player by typing his name below:</strong></label>
+        <label id="searchlabel" for="searchbar" class="text-white-50"><strong>Search for a player by typing his name below:</strong></label>
         <input type="text" class="form-control" onkeyup="startServerConnection(this.value)" id="searchbar" name="playername" placeholder="e.g. Stephen Curry, James, Irving, durant, etc.">
       </form>
       <div class="searchguide"><p class="text-info">* Start typing now! page will load results as you type 4 or more characters.</p></div>
