@@ -1,14 +1,13 @@
 <?php
 //Settings for SQL Connection
 $servername = "ianroldandbidentifier.ctsiyx6wkl2q.us-east-2.rds.amazonaws.com";
-$port = "8080";
 $username = "dbianroldan";
 $password = "dbianroldan";
 $dbname = "dbbasketballstats";
 //----------------------------
 
 //Connection string to setup connection to server and its specified database
-$connectionString = "mysql:host=$servername;port=$port;dbname=$dbname";
+$connectionString = "mysql:host=$servername;dbname=$dbname";
 
 
 class Connector{
