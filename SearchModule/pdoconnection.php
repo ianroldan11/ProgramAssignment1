@@ -1,9 +1,9 @@
 <?php
 //Settings for SQL Connection
-$servername = "localhost";
+$servername = "ianroldandbidentifier.ctsiyx6wkl2q.us-east-2.rds.amazonaws.com";
 $port = "8080";
-$username = "root";
-$password = "";
+$username = "dbianroldan";
+$password = "dbianroldan";
 $dbname = "dbbasketballstats";
 //----------------------------
 
