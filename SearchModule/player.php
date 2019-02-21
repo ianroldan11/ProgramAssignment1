@@ -33,6 +33,9 @@ class Player{
 
   private $espnID;
   private $backgroundPicture;
+  private $twitterUrl;
+  private $youtubeVideo1;
+  private $youtubeVideo2;
 
 	public function __construct($playerInfoArray){
 		$this->id = $playerInfoArray['id'];
@@ -69,6 +72,9 @@ class Player{
 
     $this->espnID = $playerInfoArray['espnID'];
     $this->backgroundPicture = $playerInfoArray['backgroundPicture'];
+    $this->twitterUrl = $playerInfoArray['twitter'];
+    $this->youtubeVideo1 = $playerInfoArray['youtube1'];
+    $this->youtubeVideo2 = $playerInfoArray['youtube2'];
 	}
 
 	public function getID(){
@@ -156,6 +162,15 @@ class Player{
   }
   public function getBackgroundPicture(){
     return $this->backgroundPicture;
+  }
+  public function getTwitterUrl(){
+    return $this->twitterUrl;
+  }
+  public function getYoutubeVideo1(){
+    return $this->youtube1;
+  }
+  public function getYoutubeVideo2(){
+    return $this->youtube2;
   }
 
   public function lowerCaseTeam(){
@@ -313,21 +328,21 @@ class Player{
               <div class='card-body'>
                 
                 <!-- Start Carousel -->
-                <div id='videoCarou$this->id' class='carousel slide' data-ride='carousel'>                
+                <div id='videoCarou$this->id' class='carousel slide' data-ride='carousel' data-interval='false'>                
                   
                   <!-- The slideshow -->
                   <div class='carousel-inner'>
                     <div class='carousel-item active'>
 
                       <div class='embed-responsive embed-responsive-16by9'>
-                        <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
+                        <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$this->youtubeVideo1'></iframe>
                       </div>
                       
                     </div>
                     <div class='carousel-item'>
 
                       <div class='embed-responsive embed-responsive-16by9'>
-                        <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
+                        <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/$this->youtubeVideo2'></iframe>
                       </div>
                      
                     </div>                    
@@ -355,7 +370,7 @@ class Player{
             </div>
             <div id='collapseTwo$this->id' class='collapse' data-parent='#accordion$this->id'>
               <div class='card-body'>
-                <a class='twitter-timeline' data-height='800' data-theme='dark' href='https://twitter.com/StephenCurry30?ref_src=twsrc%5Etfw'>Tweets by StephenCurry30</a>              
+                <a class='twitter-timeline' data-height='800' data-theme='dark' href='https://twitter.com/$this->twitterUrl?ref_src=twsrc%5Etfw'>Tweets by StephenCurry30</a>              
               </div>
             </div>
           </div>

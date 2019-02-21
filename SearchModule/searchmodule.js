@@ -4,6 +4,8 @@ function insertResults(name){
 
 // AJAX function for search bar
 function startServerConnection(searchedName){
+  document.getElementById("output").innerHTML = "<h3 align='center' class='text-light'>Searching Results for "
+   + searchedName + "...</h3>";
 	if (searchedName.length == 0) { 
       document.getElementById("output").innerHTML = "";
       return;
