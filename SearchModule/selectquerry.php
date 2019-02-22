@@ -12,8 +12,8 @@ class BasketballStatsQuerry{
         return $resultArray;        
     }
 
-    public static function selectAllWithCondition($connection, $tableNamesString, $searchedString){
-    	$stmt = $connection->prepare("SELECT PlayersStatsTable.*, PlayersPicturesTable.espnID, PlayersPicturesTable.backgroundPicture, PlayersPicturesTable.twitter, PlayersPicturesTable.youtube1, PlayersPicturesTable.youtube2 FROM PlayersStatsTable INNER JOIN PlayersPicturesTable ON PlayersStatsTable.id = PlayersPicturesTable.id WHERE CONCAT(FirstName, ' ', LastName) LIKE '%$searchedString%' OR CONCAT(LastName, ' ', FirstName) LIKE '%$searchedString%';");
+    public static function selectAllWithCondition($connection, $columnNamesString, $searchedString){
+    	$stmt = $connection->prepare("SELECT $columnNamesString FROM PlayersStatsTable INNER JOIN PlayersPicturesTable ON PlayersStatsTable.id = PlayersPicturesTable.id WHERE CONCAT(FirstName, ' ', LastName) LIKE '%$searchedString%' OR CONCAT(LastName, ' ', FirstName) LIKE '%$searchedString%';");
     	$stmt->execute();
         // fetches data from the executed querry
         $resultArray = $stmt->fetchAll();
@@ -21,7 +21,7 @@ class BasketballStatsQuerry{
 
         // if no result through accurate searching, search by misspelled names instead
         if (!$resultArray){
-            $stmt = $connection->prepare("SELECT PlayersStatsTable.*, PlayersPicturesTable.espnID, PlayersPicturesTable.backgroundPicture, PlayersPicturesTable.twitter, PlayersPicturesTable.youtube1, PlayersPicturesTable.youtube2 FROM PlayersStatsTable INNER JOIN PlayersPicturesTable ON PlayersStatsTable.id = PlayersPicturesTable.id  WHERE levenshtein(LastName, '$searchedString') < 3 OR levenshtein(FirstName, '$searchedString') < 3 OR levenshtein(CONCAT(LastName, ' ', FirstName), '$searchedString') < 4 OR  levenshtein(CONCAT(FirstName, ' ', LastName), '$searchedString') < 4;");
+            $stmt = $connection->prepare("SELECT $columnNamesString FROM PlayersStatsTable INNER JOIN PlayersPicturesTable ON PlayersStatsTable.id = PlayersPicturesTable.id  WHERE levenshtein(LastName, '$searchedString') < 3 OR levenshtein(FirstName, '$searchedString') < 3 OR levenshtein(CONCAT(LastName, ' ', FirstName), '$searchedString') < 4 OR  levenshtein(CONCAT(FirstName, ' ', LastName), '$searchedString') < 4;");
             $stmt->execute();
             $resultArray = $stmt->fetchAll();
         }

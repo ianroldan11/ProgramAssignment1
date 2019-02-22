@@ -36,6 +36,8 @@ class Player{
   private $twitterUrl;
   private $youtubeVideo1;
   private $youtubeVideo2;
+  private $picture1;
+  private $picture2;
 
 	public function __construct($playerInfoArray){
 		$this->id = $playerInfoArray['id'];
@@ -75,6 +77,8 @@ class Player{
     $this->twitterUrl = $playerInfoArray['twitter'];
     $this->youtubeVideo1 = $playerInfoArray['youtube1'];
     $this->youtubeVideo2 = $playerInfoArray['youtube2'];
+    $this->picture1 = $playerInfoArray['picture1'];
+    $this->picture2 = $playerInfoArray['picture2'];
 	}
 
 	public function getID(){
@@ -172,19 +176,21 @@ class Player{
   public function getYoutubeVideo2(){
     return $this->youtube2;
   }
+  public function getPicture1(){
+    return $this->picture1;
+  }
+  public function getPicture2(){
+    return $this->picture2;
+  }
 
   public function lowerCaseTeam(){
     return strtolower($this->team);
   }
 
   // echos html code for the results showing the stats of this player object
-	public function echoDetails(){
+  public function printPictureAndLogo(){
     $teamLogoIdentifier =  $this->lowerCaseTeam();
-		return "<!-- 1 thin container per player -->
-    <div class='container-fluid parallax' style='background-image:url(\"images/backgrounds/$this->backgroundPicture\");'>
-      <div class='thincontainer' style='height: 80%;'>
-
-        <!-- container for picture -->      
+    return "<!-- container for picture -->      
         <div class='container mb-3' style='margin: auto;'>
           <div class='row'>
             <!-- col for protrait -->
@@ -193,12 +199,14 @@ class Player{
             </div>
             <!-- col for logo -->
             <div class='col-sm-6' >
-              <img title='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='portrait' style='height: 100%'>
+              <img title='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='logo' style='height: 100%; width: 100%'>
             </div>
           </div>
-        </div>
+        </div>";
+  }
 
-        <!-- container for name -->
+  public function printDetails(){
+    return "<!-- container for name -->
         <div class='container mb-3 shadowed border border-dark' style='text-align: center;'>
           <h5 id='lebron' class='display-4 text-white' style='margin: auto'><strong>$this->firstName $this->lastName</strong></h5>
         </div>
@@ -213,9 +221,12 @@ class Player{
               <h3 class='text-light'><small>Min: $this->min</small></h3>
             </div>
           </div>
-        </div>
+        </div>";
 
-        <!-- container for top FG & 3PT -->
+  }
+
+  public function printFGAnd3PT(){
+    return "<!-- container for top FG & 3PT -->
         <div class='container mb-3'>
           <div class='row'><h3 class='text-white'><strong>Field Goal Stats</strong></h3></div>
           <div class='row'>
@@ -248,9 +259,11 @@ class Player{
               <h3 class='text-info'><small>Pct: $this->pct3PT</small></h3>
             </div>
           </div>
-        </div>
+        </div>";
+  }
 
-        <!-- container for top FT & Reb -->
+  public function printFTAndReb(){
+    return "<!-- container for top FT & Reb -->
         <div class='container mb-3'>
           <div class='row'><h3 class='text-white'><strong>Free Throw Stats</strong></h3></div>
           <div class='row'>
@@ -283,9 +296,11 @@ class Player{
               <h3 class='text-info'><small>Total: $this->totReb</small></h3>
             </div>
           </div>
-        </div>
+        </div>";
+  }
 
-        <!-- container for top Other Stats -->
+  public function printOtherStats(){
+    return "<!-- container for top Other Stats -->
         <div class='container mb-3'>
           <div class='row'><h3 class='text-white'><strong>Other Info</strong></h3></div>
           <div class='row'>
@@ -310,24 +325,11 @@ class Player{
               <h3 class='text-info'><small>PPG: $this->ppg</small></h3>
             </div>
           </div>
-        </div>
+        </div>";
+  }
 
-        <!-- pics -->
-        <!-- twitter -->
-        <!-- youtube -->
-
-        <!-- Start collapse -->
-        <div id='accordion$this->id'>
-          <div class='card'>
-            <div class='card-header' style='background-color: black'>
-              <a class='card-link' data-toggle='collapse' href='#collapseOne$this->id'>
-                Youtube Videos of $this->lastName
-              </a>
-            </div>
-            <div id='collapseOne$this->id' class='collapse show' data-parent='#accordion$this->id'>
-              <div class='card-body'>
-                
-                <!-- Start Carousel -->
+  public function printCarouselForYoutubeVideos(){
+    return "<!-- Start Carousel -->
                 <div id='videoCarou$this->id' class='carousel slide' data-ride='carousel' data-interval='false'>                
                   
                   <!-- The slideshow -->
@@ -356,47 +358,27 @@ class Player{
                     <span class='carousel-control-next-icon'></span>
                   </a>
                 </div>
-                <!-- End Carousel -->
+                <!-- End Carousel -->";
+  }
 
-              </div>
-            </div>
-          </div>
+  public function printTwitterWidget(){
+    return "<a class='twitter-timeline' data-height='800' data-theme='dark' href='https://twitter.com/$this->twitterUrl?ref_src=twsrc%5Etfw'>Tweets by $this->lastName</a>";
+  }
 
-          <div class='card'>
-            <div class='card-header' style='background-color: black'>
-              <a class='collapsed card-link' data-toggle='collapse' href='#collapseTwo$this->id'>
-                Tweets about $this->lastName
-              </a>
-            </div>
-            <div id='collapseTwo$this->id' class='collapse' data-parent='#accordion$this->id'>
-              <div class='card-body'>
-                <a class='twitter-timeline' data-height='800' data-theme='dark' href='https://twitter.com/$this->twitterUrl?ref_src=twsrc%5Etfw'>Tweets by StephenCurry30</a>              
-              </div>
-            </div>
-          </div>
-
-          <div class='card'>
-            <div class='card-header' style='background-color: black'>
-              <a class='collapsed card-link' data-toggle='collapse' href='#collapseThree$this->id'>
-                Pictures of $this->lastName
-              </a>
-            </div>
-            <div id='collapseThree$this->id' class='collapse' data-parent='#accordion$this->id'>
-              <div class='card-body'>
-
-              <!-- Start Carousel -->
+  public function printCarouselForPictures(){
+    return "<!-- Start Carousel -->
                 <div id='pictureCarou$this->id' class='carousel slide' data-ride='carousel'>                
                   
                   <!-- The slideshow -->
                   <div class='carousel-inner'>
                     <div class='carousel-item active'>
 
-                      <img src='images/backgrounds/wade.jpg' alt='Los Angeles' width='1100' height='500'>
+                      <img src='$this->picture1' alt='picture 1' width='1100' height='500'>
                       
                     </div>
                     <div class='carousel-item'>
 
-                       <img src='images/backgrounds/drummond.jpg' alt='Los Angeles' width='1100' height='500'>
+                       <img src='$this->picture2' alt='picture 2' width='1100' height='500'>
                      
                     </div>                    
                   </div>
@@ -409,13 +391,70 @@ class Player{
                     <span class='carousel-control-next-icon'></span>
                   </a>
                 </div>
-                <!-- End Carousel -->
+                <!-- End Carousel -->";
+  }
 
+  public function printCollapseForMediaObjects(){
+    return "<!-- Start collapse -->
+        <div id='accordion$this->id'>
+          <div class='card'>
+            <div class='card-header' style='background-color: black'>
+              <a class='card-link' data-toggle='collapse' href='#collapseOne$this->id'>
+                Youtube Videos of $this->lastName
+              </a>
+            </div>
+            <div id='collapseOne$this->id' class='collapse show' data-parent='#accordion$this->id'>
+              <div class='card-body'>
+                {$this->printCarouselForYoutubeVideos()}
+              </div>
+            </div>
+          </div>
+
+          <div class='card'>
+            <div class='card-header' style='background-color: black'>
+              <a class='collapsed card-link' data-toggle='collapse' href='#collapseTwo$this->id'>
+                Tweets about $this->lastName
+              </a>
+            </div>
+            <div id='collapseTwo$this->id' class='collapse' data-parent='#accordion$this->id'>
+              <div class='card-body'>
+                {$this->printTwitterWidget()}                              
+              </div>
+            </div>
+          </div>
+
+          <div class='card'>
+            <div class='card-header' style='background-color: black'>
+              <a class='collapsed card-link' data-toggle='collapse' href='#collapseThree$this->id'>
+                Pictures of $this->lastName
+              </a>
+            </div>
+            <div id='collapseThree$this->id' class='collapse' data-parent='#accordion$this->id'>
+              <div class='card-body'>
+                {$this->printCarouselForPictures()}
               </div>
             </div>
           </div>
         </div>
-        <!-- End Collapses -->       
+        <!-- End Collapses -->";
+  }
+
+	public function echoDetails(){
+		return "<!-- 1 thin container per player -->
+    <div class='container-fluid parallax' style='background-image:url(\"images/backgrounds/$this->backgroundPicture\");'>
+      <div class='thincontainer' style='height: 80%;'>
+
+        {$this->printPictureAndLogo()}
+
+        {$this->printDetails()}
+
+        {$this->printFGAnd3PT()}
+
+        {$this->printFTAndReb()}
+
+        {$this->printOtherStats()}
+
+        {$this->printCollapseForMediaObjects()}          
 
       </div>
     </div>

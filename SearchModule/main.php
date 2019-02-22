@@ -14,7 +14,8 @@ if (strlen($nameOfSearchedPlayer) > 3){
 	if ($connection){
 	global $result;
 	// perform select querry
-	$result = BasketballStatsQuerry::selectAllWithCondition($connection, 'PlayersStatsTable', $nameOfSearchedPlayer);
+	$columnsToBeQuerried = "PlayersStatsTable.*, PlayersPicturesTable.espnID, PlayersPicturesTable.backgroundPicture, PlayersPicturesTable.twitter, PlayersPicturesTable.youtube1, PlayersPicturesTable.youtube2, PlayersPicturesTable.picture1, PlayersPicturesTable.picture2";
+	$result = BasketballStatsQuerry::selectAllWithCondition($connection, $columnsToBeQuerried, $nameOfSearchedPlayer);
 	}
 
 	if ($result){
@@ -25,6 +26,7 @@ if (strlen($nameOfSearchedPlayer) > 3){
 			array_push($playersArray, $player);
 		}
 		// echo result
+		echo "<div style='text-align: center'><h4 class='text-info'>Showing results for <span class='text-white'>$nameOfSearchedPlayer</span>...</h4></div>";
 		foreach ($playersArray as $player) {
 			$resultName = $player->getLastName() . ' ' . $player->getFirstName();
 			echo $player->echoDetails();
