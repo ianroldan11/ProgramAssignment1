@@ -14,7 +14,7 @@ if (strlen($nameOfSearchedPlayer) > 3){
 	if ($connection){
 	global $result;
 	// perform select querry
-	$columnsToBeQuerried = "PlayersStatsTable.*, PlayersPicturesTable.espnID, PlayersPicturesTable.backgroundPicture, PlayersPicturesTable.twitter, PlayersPicturesTable.youtube1, PlayersPicturesTable.youtube2, PlayersPicturesTable.picture1, PlayersPicturesTable.picture2";
+	$columnsToBeQuerried = "PlayersStatsTable.*, PlayersMediaTable.espnID, PlayersMediaTable.backgroundPicture, PlayersMediaTable.twitter, PlayersMediaTable.youtube1, PlayersMediaTable.youtube2, PlayersMediaTable.picture1, PlayersMediaTable.picture2";
 	$result = BasketballStatsQuerry::selectAllWithCondition($connection, $columnsToBeQuerried, $nameOfSearchedPlayer);
 	}
 

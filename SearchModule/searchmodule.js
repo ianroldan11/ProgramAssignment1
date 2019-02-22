@@ -3,6 +3,9 @@ function insertResults(name){
 }
 
 // AJAX function for search bar
+var xmlhttp;
+
+
 function startServerConnection(searchedName){
   document.getElementById("output").innerHTML = "<h3 align='center' class='text-light'>Searching Results for "
    + searchedName + "...</h3>";
@@ -10,7 +13,13 @@ function startServerConnection(searchedName){
       document.getElementById("output").innerHTML = "";
       return;
   	} else {
-      var xmlhttp = new XMLHttpRequest();
+
+      try {
+        xmlhttp.abort();
+      } catch(e) {
+      }
+
+      xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
        	  //inserts results based on the text that main.php echoed

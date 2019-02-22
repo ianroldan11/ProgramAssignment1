@@ -404,7 +404,7 @@ class Player{
               </a>
             </div>
             <div id='collapseOne$this->id' class='collapse show' data-parent='#accordion$this->id'>
-              <div class='card-body'>
+              <div class='card-body' style='background-color: black'>
                 {$this->printCarouselForYoutubeVideos()}
               </div>
             </div>
@@ -417,7 +417,7 @@ class Player{
               </a>
             </div>
             <div id='collapseTwo$this->id' class='collapse' data-parent='#accordion$this->id'>
-              <div class='card-body'>
+              <div class='card-body' style='background-color: black'>
                 {$this->printTwitterWidget()}                              
               </div>
             </div>
@@ -430,7 +430,7 @@ class Player{
               </a>
             </div>
             <div id='collapseThree$this->id' class='collapse' data-parent='#accordion$this->id'>
-              <div class='card-body'>
+              <div class='card-body' style='background-color: black'>
                 {$this->printCarouselForPictures()}
               </div>
             </div>
