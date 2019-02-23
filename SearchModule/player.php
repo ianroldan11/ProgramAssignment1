@@ -194,11 +194,11 @@ class Player{
         <div class='container mb-3' style='margin: auto;'>
           <div class='row'>
             <!-- col for protrait -->
-            <div class='col-sm-6'>
+            <div class='col-md-6'>
               <img title='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/$this->espnID.png&w=350&h=254' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/$this->espnID.png&w=350&h=254' class='img-fluid rounded-circle shadow-lg' alt='portrait' style='height: 100%; width: auto; object-fit: cover;'>
             </div>
             <!-- col for logo -->
-            <div class='col-sm-6' >
+            <div class='col-md-6' >
               <img title='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' src='https://a.espncdn.com/i/teamlogos/nba/500/$teamLogoIdentifier.png' class='img-fluid shadow-lg' alt='logo' style='height: 100%; width: 100%'>
             </div>
           </div>
