@@ -1,0 +1,17 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Emulator config file set to C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\ESPNWorkerRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] DiagnosticsStoreRootPath set to: C:\Users\Ian Francis Roldan\AppData\Local\dftmp\Resources\85e2dc1d-2cc0-44d0-bb72-b1954c40a72f
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Loading config file: C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\ESPNWorkerRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Config file to read: C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\ESPNWorkerRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Emulator config file set to C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\ESPNWorkerRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:52:41 AM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:53:52 AM] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [19/03/2019 7:53:52 AM] DiagnosticPlugin exited with code 0

@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WebCrawlerModule", "WebCrawlerModule\WebCrawlerModule.ccproj", "{CDF24430-0ADC-44FE-9D6D-87DB8B8737BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRole1", "WebRole1\WebRole1.csproj", "{F12B4517-9006-48EE-A981-4C90B82605BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNNWorkerRole", "WorkerRole1\CNNWorkerRole.csproj", "{0742B520-3063-41A5-AD9C-B9892837980B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BleacherReportWorkerRole", "WorkerRole2\BleacherReportWorkerRole.csproj", "{7E01F47E-3ECC-41A2-A135-F56998235722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDBWorkerRole", "WorkerRole3\IMDBWorkerRole.csproj", "{9776CA40-CF22-4FE2-91F9-42408DA20C60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESPNWorkerRole", "ESPNWorkerRole\ESPNWorkerRole.csproj", "{B770D8DD-E41D-472E-9520-C8728DEFED56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForbesWorkerRole", "ForbesWorkerRole\ForbesWorkerRole.csproj", "{2F97F0D4-1C1B-49F5-A1DA-ABC8D9EAA487}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDF24430-0ADC-44FE-9D6D-87DB8B8737BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF24430-0ADC-44FE-9D6D-87DB8B8737BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF24430-0ADC-44FE-9D6D-87DB8B8737BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF24430-0ADC-44FE-9D6D-87DB8B8737BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12B4517-9006-48EE-A981-4C90B82605BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12B4517-9006-48EE-A981-4C90B82605BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12B4517-9006-48EE-A981-4C90B82605BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12B4517-9006-48EE-A981-4C90B82605BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0742B520-3063-41A5-AD9C-B9892837980B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0742B520-3063-41A5-AD9C-B9892837980B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0742B520-3063-41A5-AD9C-B9892837980B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0742B520-3063-41A5-AD9C-B9892837980B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E01F47E-3ECC-41A2-A135-F56998235722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E01F47E-3ECC-41A2-A135-F56998235722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E01F47E-3ECC-41A2-A135-F56998235722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E01F47E-3ECC-41A2-A135-F56998235722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9776CA40-CF22-4FE2-91F9-42408DA20C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9776CA40-CF22-4FE2-91F9-42408DA20C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9776CA40-CF22-4FE2-91F9-42408DA20C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9776CA40-CF22-4FE2-91F9-42408DA20C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B770D8DD-E41D-472E-9520-C8728DEFED56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B770D8DD-E41D-472E-9520-C8728DEFED56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B770D8DD-E41D-472E-9520-C8728DEFED56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B770D8DD-E41D-472E-9520-C8728DEFED56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F97F0D4-1C1B-49F5-A1DA-ABC8D9EAA487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F97F0D4-1C1B-49F5-A1DA-ABC8D9EAA487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F97F0D4-1C1B-49F5-A1DA-ABC8D9EAA487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F97F0D4-1C1B-49F5-A1DA-ABC8D9EAA487}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6DA3286-9249-4F2D-9A2D-86920CC44852}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Emulator config file set to C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] DiagnosticsStoreRootPath set to: C:\Users\Ian Francis Roldan\AppData\Local\dftmp\Resources\84683f7e-4e29-4930-ad48-5e15bd804d98
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Loading config file: C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Config file to read: C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Emulator config file set to C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:40 AM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole3\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole2\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Loading config file: C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Config file to read: C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:23:41 AM] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole3\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:24:41 AM] Forcefully terminated DiagnosticsPlugin.exe process with pid 11056
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:24:41 AM] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\Ian Francis Roldan\source\repos\WebCrawlerModule\WebCrawlerModule\csx\Debug\roles\WorkerRole2\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:24:56 AM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:24:56 AM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:24:56 AM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:26:07 AM] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [18/03/2019 6:26:07 AM] DiagnosticPlugin exited with code 0

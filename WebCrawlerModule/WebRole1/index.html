@@ -1,0 +1,769 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>Webcrawler Dashboard</title>
+</head>
+<body>
+    <div>
+        <!--Refresh button (See bottom right corner)-->
+        <div class="fixed-action-btn">
+            <a onclick="refresh()" class="btn-floating btn-large brown darken-1 waves-effect waves-light tooltipped" data-tooltip="Refresh Data">
+                <i class="large material-icons">refresh</i>
+            </a>
+        </div>
+
+        <!--Navigation Bar on top-->
+        <div class=" navbar-fixed">
+            <nav class="nav-extended brown darken-1">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo center">Web Crawler<i class="material-icons left">data_usage</i></a>
+                    <ul id="nav-mobile" class="left  hide-on-med-and-down">
+                        <li><a href="#" data-target="slide-out" onclick="openSideNav()"><i class="material-icons">menu</i></a></li>
+                    </ul>
+                </div>
+                <div class="nav-content brown darken-2">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab"><a href="#" onclick="showGeneralOverView()">General Overview</a></li>
+                        <li class="tab"><a href="#" onclick="showWebCrawlerExplorer()">Web Crawler Explorer</a></li>
+                        <li class="tab"><a href="#" onclick="showGeneralLog()">General Log</a></li>
+                        <li class="tab"><a href="#" onclick="showGeneralSettings()">General Settings</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!--Side Navigation Bar Click Menu Button on top right-->
+        <ul id="slide-out" class="sidenav brown lighten-5">
+            <li>
+                <div class="user-view valign-wrapper z-depth-2">
+                    <div class="background brown darken-1" style="height:100%"></div>
+                    <h4 class="white-text">Web Crawler</h4>
+                </div>
+            </li>
+            <li class="tab"><a class="waves-effect" href="#" onclick="showGeneralOverView()">General Overview</a></li>
+            <li class="tab"><a class="waves-effect" href="#" onclick="showWebCrawlerExplorer()">Web Crawler Explorer</a></li>
+            <li class="tab"><a class="waves-effect" href="#" onclick="showGeneralLog()">General Log</a></li>
+            <li class="tab"><a class="waves-effect" href="#" onclick="showGeneralSettings()">General Settings</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Web Crawlers</a></li>
+            <li><a class="waves-effect" href="#!">Bleacher Report</a></li>
+            <li><a class="waves-effect" href="#!">CNN</a></li>
+            <li><a class="waves-effect" href="#!">ESPN</a></li>
+            <li><a class="waves-effect" href="#!">Forbes</a></li>
+            <li><a class="waves-effect" href="#!">IMDB</a></li>
+        </ul>
+
+        <!--Overhead title and details-->
+        <div class="container">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <h2>
+                        <span class="card-title center">
+                            <strong id="header">
+                                Programming Assignment #3
+                            </strong>
+                        </span>
+                    </h2>
+                    <div class="divider"></div>
+                    <br />
+                    <p class="center" id="subheader">Web Crawlers and Dashboards...</p>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <!-- Start Of General Overview -->
+        <div id="generaloverview">
+            <!--Machine Counters Section Header-->
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">
+                        Machine Counters Per Crawler
+                    </span>
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <!--Machine Counters-->
+            <div class="row">
+                <!--BR mach cntr-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card brown lighten-2">
+                        <div class="card-content white-text center hoverable">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/BR_Logo.png" alt="Bleacher Report" class="siteicon" />
+                            <div class="divider"></div>
+                            <span class="card-title">Bleacher Report</span>
+                            <p>CPU Usage: <span id="bleacherreportcpu">0</span>%</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="determinate brown" id="bleacherreportmachbar" style="width: 70%"></div>
+                            </div>
+                            <p>Available Memory: <span id="bleacherreportram">0</span> MB</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="indeterminate brown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--CNN mach cntr-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card white">
+                        <div class="card-content black-text center hoverable">
+                            <img src="https://childrensvillage.org/wp-content/uploads/2018/12/Colors-CNN-Logo.jpg" alt="CNN" class="siteicon" />
+                            <div class="divider"></div>
+                            <span class="card-title">CNN</span>
+                            <p>CPU Usage: <span id="cnncpu">0</span>%</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="determinate brown" id="cnnmachbar" style="width: 70%"></div>
+                            </div>
+                            <p>Available Memory: <span id="cnnram">0</span> MB</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="indeterminate brown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--ESPN mach cntr-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card brown lighten-2">
+                        <div class="card-content white-text center hoverable">
+                            <img src="https://thespun.com/wp-content/uploads/2017/01/Screen-Shot-2017-01-12-at-12.34.20-PM-775x465.png" alt="ESPN" class="siteicon" />
+                            <div class="divider"></div>
+                            <span class="card-title">ESPN</span>
+                            <p>CPU Usage: <span id="espncpu">0</span>%</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="determinate brown" id="espnmachbar" style="width: 70%"></div>
+                            </div>
+                            <p>Available Memory: <span id="espnram">0</span> MB</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="indeterminate brown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Forbes mach cntr-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card white">
+                        <div class="card-content black-text center hoverable">
+                            <img src="https://storage.googleapis.com/images.frenchly.us/2016/07/Forbes-logo.jpg" alt="Forbes" class="siteicon" />
+                            <div class="divider"></div>
+                            <span class="card-title">Forbes</span>
+                            <p>CPU Usage: <span id="forbescpu">0</span>%</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="determinate brown" id="forbesmachbar" style="width: 70%"></div>
+                            </div>
+                            <p>Available Memory: <span id="forbesram">0</span> MB</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="indeterminate brown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--IMDB macg cntr-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card white">
+                        <div class="card-content black-text center hoverable">
+                            <img src="https://vignette.wikia.nocookie.net/eastereggs/images/f/f8/IMDB_Logo.png/revision/latest?cb=20160930213814" alt="IMDB" class="siteicon" />
+                            <div class="divider"></div>
+                            <span class="card-title">IMDB</span>
+                            <p>CPU Usage: <span id="imdbcpu">0</span>%</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="determinate brown" id="imdbmachbar" style="width: 70%"></div>
+                            </div>
+                            <p>Available Memory: <span id="imdbram">0</span> MB</p>
+                            <div class="progress brown lighten-4" style="height:60px">
+                                <div class="indeterminate brown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Number of Indexed Data Section-->
+            <div class="row">
+                <div class="col s6">
+                    <div class="card white hoverable">
+                        <div class="card-content black-text">
+                            <span class="card-title">Number of Indexed Data</span>
+                            <div class="divider"></div>
+                            <div class="row">
+                                <!--data stored-->
+                                <div class="col s12 m12 l4">
+                                    <h1 class="center brown-text"><span id="numdatastored">0</span></h1>
+                                    <h5 class="center brown-text text-lighten-2"><span>Data Stored</span></h5>
+                                </div>
+                                <!--blob files-->
+                                <div class="col s12 m12 l4">
+                                    <h1 class="center brown-text"><span id="numblobfiles">0</span></h1>
+                                    <h5 class="center brown-text text-lighten-2"><span>Blob Files Written</span></h5>
+                                </div>
+                                <!--total urls crawled-->
+                                <div class="col s12 m12 l4">
+                                    <h1 class="center brown-text"><span id="numurlscrawled">0</span></h1>
+                                    <h5 class="center brown-text text-lighten-2"><span>URLs Crawled</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--size of queues section-->
+                <div class="col s6">
+                    <div class="card brown lighten-2 hoverable">
+                        <div class="card-content white-text">
+                            <span class="card-title">Size of Queues</span>
+                            <div class="divider"></div>
+                            <table class="striped centered responsive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Domain Crawled</th>
+                                        <th>URLs in Queue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!--BR queue-->
+                                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/BR_Logo.png" alt="Bleacher Report" class="siteicon" /></td>
+                                        <td><h4 id="bleacherreportqueuesize">0</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <!--CNN queue-->
+                                        <td><img src="https://childrensvillage.org/wp-content/uploads/2018/12/Colors-CNN-Logo.jpg" alt="CNN" class="siteicon" /></td>
+                                        <td><h4 id="cnnqueuesize">0</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <!--ESPN queue-->
+                                        <td><img src="https://thespun.com/wp-content/uploads/2017/01/Screen-Shot-2017-01-12-at-12.34.20-PM-775x465.png" alt="ESPN" class="siteicon" /></td>
+                                        <td><h4 id="espnqueuesize">0</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <!--Forbes queue-->
+                                        <td><img src="https://storage.googleapis.com/images.frenchly.us/2016/07/Forbes-logo.jpg" alt="Forbes" class="siteicon" /></td>
+                                        <td><h4 id="forbesqueuesize">0</h4></td>
+                                    </tr>
+                                    <tr>
+                                        <!--IMDB queue-->
+                                        <td><img src="https://vignette.wikia.nocookie.net/eastereggs/images/f/f8/IMDB_Logo.png/revision/latest?cb=20160930213814" alt="IMDB" class="siteicon" /></td>
+                                        <td><h4 id="imdbqueuesize">0</h4></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--State of crawlers section header-->
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">
+                        State of Crawlers
+                    </span>
+                    <div class="divider"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--BR web crawler-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card brown lighten-2 hoverable">
+                        <div class="card-content white-text">
+                            <div class="row valign-wrapper">
+                                <div class="col s12 m6">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/BR_Logo.png" alt="Bleacher Report" class="responsive-img fluidsiteicon" />
+                                </div>
+                                <div class="col s12 m6">
+                                    <span class="card-title">Bleacher Report</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>Threads Running: (<span id="bleacherreportnumrunning">1</span>/4)</p>
+                            <br />
+                            <p>Threads Stopped: (<span id="bleacherreportnumstopped">3</span>/4)</p>
+                            <br />
+                            <div class="progress brown lighten-4" style="height:20px">
+                                <div class="determinate brown" id="bleacherreportthreadsbar" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--CNN web crawler-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card white hoverable">
+                        <div class="card-content black-text">
+                            <div class="row valign-wrapper">
+                                <div class="col s12 m6">
+                                    <img src="https://childrensvillage.org/wp-content/uploads/2018/12/Colors-CNN-Logo.jpg" alt="CNN" class="responsive-img fluidsiteicon" />
+                                </div>
+                                <div class="col s12 m6">
+                                    <span class="card-title">CNN</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>Threads Running: (<span id="cnnnumrunning">0</span>/4)</p>
+                            <br />
+                            <p>Threads Stopped: (<span id="cnnnumstopped">0</span>/4)</p>
+                            <br />
+                            <div class="progress brown lighten-4" style="height:20px">
+                                <div class="determinate brown" id="cnnthreadsbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--ESPN web crawler-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card brown lighten-2 hoverable">
+                        <div class="card-content white-text">
+                            <div class="row valign-wrapper">
+                                <div class="col s12 m6">
+                                    <img src="https://thespun.com/wp-content/uploads/2017/01/Screen-Shot-2017-01-12-at-12.34.20-PM-775x465.png" alt="ESPN" class="responsive-img fluidsiteicon" />
+                                </div>
+                                <div class="col s12 m6">
+                                    <span class="card-title">ESPN</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>Threads Running: (<span id="espnnumrunning">0</span>/4)</p>
+                            <br />
+                            <p>Threads Stopped: (<span id="espnnumstopped">0</span>/4)</p>
+                            <br />
+                            <div class="progress brown lighten-4" style="height:20px">
+                                <div class="determinate brown" id="espnthreadsbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Forbes web crawler-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card white hoverable">
+                        <div class="card-content black-text">
+                            <div class="row valign-wrapper">
+                                <div class="col s12 m6">
+                                    <img src="https://storage.googleapis.com/images.frenchly.us/2016/07/Forbes-logo.jpg" alt="Forbes" class="responsive-img fluidsiteicon" />
+                                </div>
+                                <div class="col s12 m6">
+                                    <span class="card-title">Forbes</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>Threads Running: (<span id="forbesnumrunning">0</span>/4)</p>
+                            <br />
+                            <p>Threads Stopped: (<span id="forbesnumstopped">0</span>/4)</p>
+                            <br />
+                            <div class="progress brown lighten-4" style="height:20px">
+                                <div class="determinate brown" id="forbesthreadsbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--IMDB web crawler-->
+                <div class="col s12 m6 l6 xl3">
+                    <div class="card white hoverable">
+                        <div class="card-content black-text">
+                            <div class="row valign-wrapper">
+                                <div class="col s12 m6">
+                                    <img src="https://vignette.wikia.nocookie.net/eastereggs/images/f/f8/IMDB_Logo.png/revision/latest?cb=20160930213814" alt="IMDB" class="responsive-img fluidsiteicon" />
+                                </div>
+                                <div class="col s12 m6">
+                                    <span class="card-title">IMDB</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>Threads Running: (<span id="imdbnumrunning">0</span>/4)</p>
+                            <br />
+                            <p>Threads Stopped: (<span id="imdbnumstopped">0</span>/4)</p>
+                            <br />
+                            <div class="progress brown lighten-4" style="height:20px">
+                                <div class="determinate brown" id="imdbthreadsbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- End Of General Overview -->
+        <!-- Start Of Web Crawler Explorer -->
+        <div id="webcrawlerexplorerheader" class="scale-transition scale-out">
+            <div class="card brown lighten-2 center">
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        Web Domain Crawler Selector
+                    </span>
+                    <div class="divider"></div>
+                    <p>Select a domain below by swiping to the center.</p>
+                </div>
+            </div>
+
+            <div class="parallax-container">
+                <div class="parallax"><img id="carouselbanner" src="https://officesnapshots.com/wp-content/uploads/2018/04/bleacher-report-offices-new-york-city-12-700x525.jpg"></div>
+                <div id="">
+                    <div class="carousel">
+                        <a class="carousel-item hoverable waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Slide Me!" href="#1"><img class="slideimage" src="https://logonoid.com/images/bleacher-report-logo.png"></a>
+                        <a class="carousel-item hoverable waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Slide Me!" href="#2"><img class="slideimage" src="https://www.corporateleadersgroup.com/reports-evidence-and-insights/news-images/cnn-logo.tif/image_preview"></a>
+                        <a class="carousel-item hoverable waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Slide Me!" href="#3"><img class="slideimage" src="https://images-na.ssl-images-amazon.com/images/I/21m8J9UmAfL._SY355_.png"></a>
+                        <a class="carousel-item hoverable waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Slide Me!" href="#4"><img class="slideimage" src="https://www.beaconcouncil.com/wp-content/uploads/2018/09/forbes-logo.png"></a>
+                        <a class="carousel-item hoverable waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Slide Me!" href="#5"><img class="slideimage" src="https://londonfeministfilmfestival.files.wordpress.com/2017/05/imdb-logo.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="webcrawlerexplorer">
+            <div class="container">
+                <div class="card white">
+                    <div class="card-content black-text center">
+                        <span class="card-title" id="carousellabel"></span>
+                        <div class="divider"></div>
+                        <p id="carouselsublabel"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4">
+                    <div class="card brown lighten-2 hoverable">
+                        <div class="card-content white-text center">
+                            <span class="card-title">Number of urls crawled </span>
+                            <div class="divider"></div>
+                            <h3 id="webcrawlerurlscrawled">4212</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4"></div>
+            </div>
+
+            <div class="row">
+                <div class="col s3"></div>
+                <div class="col s6">
+                    <div class="card white hoverable">
+                        <div class="card-content black-text">
+                            <span class="card-title">Urls Last Crawled</span>
+                            <div class="divider"></div>
+                            <div class="collection center">
+                                <a id="recentUrl0" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl1" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl2" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl3" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl4" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl5" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl6" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl7" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl8" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                                <a id="recentUrl9" href="#htmlcontentmodal" class="collection-item black-text waves-effect waves-light modal-trigger" onclick="getHTMLContentData(this, currentCarouselIndex)">-</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3"></div>
+            </div>
+
+            <div id="htmlcontentmodal" class="modal">
+                <div class="modal-content">
+                    <h4 id="modaltitle">Web Page Title</h4>
+                    <h5 id="modaldate">Web Page Date</h5>
+                    <p id="modalbody">Web Page Body</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+
+            <div class="card brown lighten-2 center">
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        Web Crawler Thread Manager
+                    </span>
+                    <div class="divider"></div>
+                    <p>Control panels for the 4 threads that represent in the web crawler</p>
+                </div>
+            </div>
+
+            <div class="container center">
+                <a class="waves-effect waves-light btn-large green" id="startthreads">Start All</a>
+                <a class="waves-effect waves-light btn-large red" id="stopthreads">Stop All</a>                
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card medium horizontal brown lighten-2 hoverable">
+                            <div class="card-image">
+                                <img class="animal" src="https://i.kinja-img.com/gawker-media/image/upload/s--HqfzgkTd--/c_scale,f_auto,fl_progressive,q_80,w_800/wp2qinp6fu0d8guhex9v.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content white-text">
+                                    <span class="card-title">THR-DOG: "Dog"</span>
+                                    <table class="responsive-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Status:</td>
+                                                <td id="dogstatus">idle</td>
+                                            </tr>
+                                            <tr>
+                                                <td>URL being crawled:</td>
+                                                <td id="dogurl">???</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-action center">
+                                    <div class="switch">
+                                        <label>
+                                            <span class="red-text">Stop</span>
+                                            <input type="checkbox" id="dogswitch">
+                                            <span class="lever"></span>
+                                            <span class="green-text">Start</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card medium horizontal white hoverable">
+                            <div class="card-image">
+                                <img class="animal" src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content black-text">
+                                    <span class="card-title">THR-CAT: "Cat"</span>
+                                    <table class="responsive-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Status:</td>
+                                                <td id="catstatus">idle</td>
+                                            </tr>
+                                            <tr>
+                                                <td>URL being crawled:</td>
+                                                <td id="caturl">???</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-action center">
+                                    <div class="switch">
+                                        <label>
+                                            <span class="red-text">Stop</span>
+                                            <input type="checkbox" id="catswitch">
+                                            <span class="lever"></span>
+                                            <span class="green-text">Start</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card medium horizontal white hoverable">
+                            <div class="card-image">
+                                <img class="animal" src="https://sadanduseless.b-cdn.net/wp-content/uploads/2017/06/horse-suit2.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content black-text">
+                                    <span class="card-title">THR-HRS: "Horse"</span>
+                                    <table class="responsive-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Status:</td>
+                                                <td id="horsestatus">idle</td>
+                                            </tr>
+                                            <tr>
+                                                <td>URL being crawled:</td>
+                                                <td id="horseurl">???</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-action center">
+                                    <div class="switch">
+                                        <label>
+                                            <span class="red-text">Stop</span>
+                                            <input type="checkbox" id="horseswitch">
+                                            <span class="lever"></span>
+                                            <span class="green-text">Start</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card medium horizontal brown lighten-2 hoverable">
+                            <div class="card-image">
+                                <img class="animal" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/03/28/11/cute-rabbit.jpg?w968h681">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content white-text">
+                                    <span class="card-title">THR-RBT: "Rabbit"</span>
+                                    <table class="responsive-table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Status:</td>
+                                                <td id="rabbitstatus">idle</td>
+                                            </tr>
+                                            <tr>
+                                                <td>URL being crawled:</td>
+                                                <td id="rabbiturl">???</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-action center">
+                                    <div class="switch">
+                                        <label>
+                                            <span class="red-text">Stop</span>
+                                            <input type="checkbox" id="rabbitswitch">
+                                            <span class="lever"></span>
+                                            <span class="green-text">Start</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card brown lighten-2 center">
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        Console Log
+                    </span>
+                    <div class="divider"></div>
+                    <p>Report logs for the specific web crawler</p>
+                </div>
+            </div>
+
+            <div class="container white textareacontainer">
+                <textarea id="bleacherreportlog" name="message" rows="10" cols="100" style="height:480px" placeholder="Bleacher Report Log Reports"></textarea>
+                <textarea id="cnnlog" name="message" rows="10" cols="100" style="height:480px" placeholder="CNN Log Reports"></textarea>
+                <textarea id="espnlog" name="message" rows="10" cols="100" style="height:480px" placeholder="ESPN Log Reports"></textarea>
+                <textarea id="forbeslog" name="message" rows="10" cols="100" style="height:480px" placeholder="Forbes Log Reports"></textarea>
+                <textarea id="imdblog" name="message" rows="10" cols="100" style="height:480px" placeholder="IMDB Log Reports"></textarea>
+            </div>
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <a id="bleacherreportclear" class="waves-effect waves-light btn-large brown accent-4" onclick="M.toast({html: 'Log Cleared', classes: 'red'})"><i class="material-icons left">clear</i>Clear Log</a>
+                        <a id="cnnclear" class="waves-effect waves-light btn-large brown accent-4" onclick="M.toast({html: 'Log Cleared', classes: 'red'})"><i class="material-icons left">clear</i>Clear Log</a>
+                        <a id="espnclear" class="waves-effect waves-light btn-large brown accent-4" onclick="M.toast({html: 'Log Cleared', classes: 'red'})"><i class="material-icons left">clear</i>Clear Log</a>
+                        <a id="forbesclear" class="waves-effect waves-light btn-large brown accent-4" onclick="M.toast({html: 'Log Cleared', classes: 'red'})"><i class="material-icons left">clear</i>Clear Log</a>
+                        <a id="imdbclear" class="waves-effect waves-light btn-large brown accent-4" onclick="M.toast({html: 'Log Cleared', classes: 'red'})"><i class="material-icons left">clear</i>Clear Log</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Of Web Crawler Explorer -->
+        <!-- Start Of General Log -->
+        <div id="generallog">
+            <div class="container white textareacontainer">
+                <textarea name="message" id="generallogreports" rows="10" cols="100" style="height:480px" placeholder="Log Reports"></textarea>
+            </div>
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col s12"><a class="waves-effect waves-light btn-large brown accent-4" id="generallogclear" onclick="M.toast({html: 'Log Cleared', classes: 'red'})"><i class="material-icons left">clear</i>Clear Log</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- End Of General Overview -->
+        <!-- Start Of General Settings -->
+        <div id="generalsettings">
+            <div class="container">
+                <div class="row">
+                    <!--Start all Crawlers-->
+                    <div class="col s12 m4">
+                        <div class="card light-green lighten-3 hoverable scale-transition" id="start">
+                            <div class="card-image waves-effect waves-block waves-light" onclick="hideOthers(this)">
+                                <img class="activator" src="http://www.debscott.com/selfhelp/wp-content/uploads/2010/07/start-button.jpg" />
+                            </div>
+                            <div class="card-content" onclick="dsadfsa()">
+                                <span class="card-title activator grey-text text-darken-4">Start<i class="material-icons right">more_vert</i></span>
+                            </div>
+                            <div class="card-reveal">
+                                <span onclick="showOthers(this)" class="card-title grey-text text-darken-4">Start All Crawlers?<i class="material-icons right">close</i></span>
+                                <p>Starts All threads of all the web crawlers.</p>
+                                <div class="card-action">
+                                    <a href="#" class="brown-text text-lighten-2" id="startallcrawlers" onclick="M.toast({html: 'Starting Crawlers', classes: 'red'})">YES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Stop all Crawlers-->
+                    <div class="col s12 m4">
+                        <div class="card red lighten-3 hoverable scale-transition" id="stop">
+                            <div class="card-image waves-effect waves-block waves-light" onclick="hideOthers(this)">
+                                <img class="activator" src="https://cdn-01.media-brady.com/store/stus/media/catalog/product/s/e/security-stop-signs---industrial-y4322386-44027-m0532-lg.jpg" />
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Stop<i class="material-icons right">more_vert</i></span>
+                            </div>
+                            <div class="card-reveal">
+                                <span onclick="showOthers(this)" class="card-title grey-text text-darken-4">Stop All Crawlers?<i class="material-icons right">close</i></span>
+                                <p>Stops All threads of all the web crawlers.</p>
+                                <div class="card-action">
+                                    <a href="#" class="brown-text text-lighten-2" id="stopallcrawlers" onclick="M.toast({html: 'Stopping Crawlers', classes: 'red'})">YES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Reset all Crawlers-->
+                    <div class="col s12 m4">
+                        <div class="card yellow lighten-3 hoverable scale-transition" id="reset">
+                            <div class="card-image waves-effect waves-block waves-light" onclick="hideOthers(this)">
+                                <img class="activator" src="https://www.computerhope.com/jargon/a/auto-restart.jpg" />
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Reset<i class="material-icons right">more_vert</i></span>
+                            </div>
+                            <div class="card-reveal">
+                                <span onclick="showOthers(this)" class="card-title grey-text text-darken-4">Remove All Data From Storage?<i class="material-icons right">close</i></span>
+                                <p>Removes All Data Saved In Table and Blob, clears all queues used and being used.</p>
+                                <div class="card-action">
+                                    <a href="#" class="brown-text text-lighten-2" id="resetallcrawlers" onclick="M.toast({html: 'Resetting Crawlers', classes: 'red'})">YES</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container center" id="loader" style="display: none;">
+                <div class="row">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-yellow-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row brown-text">
+                    <h5>Resetting. Please refrain from using any thread switches or controllers until resetting finishes...</h5>
+                </div>                
+            </div>
+        </div>
+        <!-- End Of General Settings -->
+    </div>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <script src="datadisplay.js"></script>
+    <script src="ajaxrequest.js"></script>
+    <script src="material.js"></script>
+</body>
+</html>
