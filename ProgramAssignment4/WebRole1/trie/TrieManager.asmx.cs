@@ -358,6 +358,10 @@ namespace WebRole1.trie
                                     listToReturn.Add(word);
                                 }
                             }
+                             else
+                            {
+                                return GetSuggestionResults(searchWord.Remove(searchWord.Length - 1));
+                            }
                         }
                     }
                 }
