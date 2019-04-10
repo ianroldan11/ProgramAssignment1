@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Custom Css -->
+    <link href="/searchmodule/main.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title>Program Assignment #4</title>
+</head>
+<body>
+    <!-- Title Card -->
+    <div class="container text-center">
+        <div id="titletext" class="card">
+            <div class="card-body"><h1><strong>Search Infrastructure</strong></h1></div>
+        </div>
+    </div>
+
+    <br />
+    <!-- Query Suggestion Module -->
+    <div class="container-fluid">
+        <!-- Text Field -->
+        <input id="textinput" class="form-control" type="text" name="playername" onkeyup="keyUpEventListener()" placeholder="Type your querry here...">
+        <!-- Query Suggestion Results Box -->
+        <div class="container-fluid" id="querysuggestionbox">
+            <!-- Cached Suggestions -->
+            <table id="recentsuggestionbox" class="table table-sm table-borderless table-hover">                
+            </table>
+            <!-- Loading Spinner For Pending Suggestion results -->
+            <div id="suggestionloadingspinner" style="display: none;">
+                <div class="spinner-border text-warning"></div><span class="text-warning">Loading...</span>
+            </div>
+            <!-- Suggestion Retrieved from trie -->
+            <table id="suggestionbox" class="table table-sm table-borderless table-hover"></table>
+        </div>
+        <!-- Alert Message when a suggestion is selected -->
+        <div id="alertmessage"></div>
+    </div>
+
+    <br />
+
+    <!-- NBA Player Stats Module -->
+    <div class="row" style="height: 100%">
+        <div class="col-md-0 col-lg-1"></div>
+        <div class="col-md-5 col-lg-5">
+            <!-- Images -->
+            <div id="imagespanel" class="row text-center" style="height: 20vmax;">
+                <div class="col-12">
+                    <div class="card">
+                        <h4 class="card-title">Images</h4>
+                    </div>
+                </div>
+                <div class="col-6" style="height: 100%">
+                    <img id="playerpicture1" style="max-width: 100%; max-height: 100%; object-fit: cover" class="img-thumbnail" src="" alt="picture1" style="">
+                </div>
+                <div class="col-6" style="height: 100%">
+                    <img id="playerpicture2" style="max-width: 100%; max-height: 100%; object-fit: cover" class="img-thumbnail" src="" alt="picture1">
+                </div>
+            </div>
+            <br />
+            <!-- Videos -->
+            <div id="videospanel" class="row text-center" style="height: auto;">
+                <div class="col-12">
+                    <div class="card">
+                        <h4 class="card-title">Videos</h4>
+                    </div>
+                </div>
+                <div class="col-6" style="height: 100%">
+                    <iframe width="100%" height="auto" id="playervideo1"
+                            src=""></iframe>
+                </div>
+                <div class="col-6" style="height: 100%">
+                    <iframe width="100%" height="auto" id="playervideo2"
+                            src=""></iframe>
+                </div>
+            </div>
+            <br />
+            <!-- Search Results header -->
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <div class="jumbotron jumbotron-fluid" id="searchheader">
+                        <div class="container text-white text-center">
+                            <h1><strong><span id="searchheadertext"></span></strong></h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Crawled Urls Query Results Module -->
+                <div id="searchresultcontainer"></div>
+            </div>
+            <br />
+        </div>
+        <!-- NBA Player description Pane -->
+        <div class="col-md-4 col-lg-3">
+            <div id="playercontainer">
+                <div class="card" style="width:100%;">
+                    <div id="playerportrait">
+                        <img class="card-img-top img-fluid" id="playerimage" src="" alt="PLAYER IMAGE">
+                    </div>
+                    <div class="card-body" id="playercontents">
+                        <h4 class="card-title" id="playername">PLAYER NAME</h4>
+                        <p class="card-text">Minutes: <span id="playermin"></span><br />GP: <span id="playergp"></span><br />Team: <span id="playerteam"></span><br /></p>
+                        <a href="#" data-toggle="collapse" data-target="#statspanel" onclick="toggleLinkName(this, 'Stats')">Show Stats...</a>
+                        <br />
+                        <a href="#" data-toggle="collapse" data-target="#twitterpanel" onclick="toggleLinkName(this, 'Tweets')">Show Tweets...</a>
+                        <div class="text-center collapse" id="statspanel">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>MFG</th>
+                                        <th>AFG</th>
+                                        <th>PctFG</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="playermfg">0</td>
+                                        <td id="playerafg">0</td>
+                                        <td id="playerpctfg">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>M3PT</th>
+                                        <th>A3PT</th>
+                                        <th>Pct3PT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="playerm3pt">0</td>
+                                        <td id="playera3pt">0</td>
+                                        <td id="playerpct3pt">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>MFT</th>
+                                        <th>AFT</th>
+                                        <th>PctFT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="playermft">0</td>
+                                        <td id="playeraft">0</td>
+                                        <td id="playerpctft">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>OffReb</th>
+                                        <th>DefReb</th>
+                                        <th>TotReb</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="playeroffrebounds">0</td>
+                                        <td id="playerdefrebounds">0</td>
+                                        <td id="playertotrebounds">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Ast</th>
+                                        <th>TO</th>
+                                        <th>Stl</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="playerast">0</td>
+                                        <td id="playerto">0</td>
+                                        <td id="playerstl">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Blk</th>
+                                        <th>PF</th>
+                                        <th>PPG</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="playerblk">0</td>
+                                        <td id="playerpf">0</td>
+                                        <td id="playerppg">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Twitter Panel -->
+                <div id="twitterpanel" class="collapse">
+                    <div id="twittercontainer">
+                    </div>
+                </div>
+                <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>            
+        </div>
+        <div class="col-md-3 col-lg-3" style="height: 100%">
+            <script data-cfasync='false' type='text/javascript' src='//p346217.clksite.com/adServe/banners?tid=346217_675912_0'></script>
+            <script data-cfasync='false' type='text/javascript' src='//p346217.clksite.com/adServe/banners?tid=346217_675912_2'></script>
+        </div>
+    </div>
+
+    <!-- Crawled Urls Query Results Module -->
+    <div id="results"></div>
+
+    <!-- JavaScript Files -->
+    <script src="/searchmodule/httprequest.js"></script>
+    <script src="/searchmodule/fetchrequest.js"></script>
+    <script src="/searchmodule/suggestionrequest.js"></script>
+    <script src="/searchmodule/effects.js"></script>
+</body>
+</html>

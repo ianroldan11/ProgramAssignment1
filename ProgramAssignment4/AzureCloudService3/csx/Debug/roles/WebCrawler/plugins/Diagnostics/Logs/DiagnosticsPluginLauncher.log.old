@@ -1,0 +1,19 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:40 AM] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:40 AM] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:40 AM] Emulator config file set to C:\Users\Ian Francis Roldan\Documents\GitHub\ProgramAssignment4\AzureCloudService3\AzureCloudService3\csx\Debug\roles\WebCrawler\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] DiagnosticsStoreRootPath set to: C:\Users\Ian Francis Roldan\AppData\Local\dftmp\Resources\d39916b1-a39d-471c-bad0-397501b48963
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Loading config file: C:\Users\Ian Francis Roldan\Documents\GitHub\ProgramAssignment4\AzureCloudService3\AzureCloudService3\csx\Debug\roles\WebCrawler\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Config file to read: C:\Users\Ian Francis Roldan\Documents\GitHub\ProgramAssignment4\AzureCloudService3\AzureCloudService3\csx\Debug\roles\WebCrawler\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Emulator config file set to C:\Users\Ian Francis Roldan\Documents\GitHub\ProgramAssignment4\AzureCloudService3\AzureCloudService3\csx\Debug\roles\WebCrawler\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:44:41 AM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Error: 0 : [10/04/2019 1:45:43 AM] DiagnosticsPlugin launch failed with exit code -1
+DiagnosticsPluginLauncher.exe Information: 0 : [10/04/2019 1:45:43 AM] DiagnosticPlugin exited with code -1

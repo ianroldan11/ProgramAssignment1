@@ -1,0 +1,30 @@
+﻿body, html {
+	height: 100%
+}
+
+body{
+	background-image: linear-gradient(to bottom left, #4db6ac, #81c784, #aed581, #dce775, #fff176 );
+	background-repeat: no-repeat;
+	background-attachment: fixed;	
+}
+
+.multicolored-title{
+	background-image: linear-gradient(to bottom left, #448aff, #3f51b5, #5e35b1);
+}
+
+.multicolored{
+	background-image: linear-gradient(to bottom right, #448aff, #3f51b5, #5e35b1);	
+}
+
+.tabs .tab a{
+    color: white;
+}
+
+.tabs .tab a.active {
+    background-color:#b3e5fc   ;
+    color:#004d40;
+} 
+
+.tabs .indicator {
+    background-color:#004d40;
+} 

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Admin Dashboard</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+	<link href="dashboard.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+			
+	<div class="card multicolored-title center">
+		<div class="card-content white-text">				
+			<h1>Admin Dashboard</h1>
+		</div>					
+	</div>	
+
+	<br/>
+
+	<div class="container center">		
+		<div class="card multicolored-title">
+			<div class="card-content white-text">											
+				<span class="card-title"><strong>Web Crawler Settings</strong></span>
+			</div>					
+		</div>			    
+	</div>
+	
+	<div class="container center">
+		<div class="row">
+			<div class="col s6">
+				<div class="card small multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">Machine Counters</span>
+						<div class="row left-align">
+							<div class="col s12">
+								<p>CPU Usage: <span id="cpu">0</span>%</p>
+							</div>
+							<div class="col s12">
+								<div class="progress">
+									<div id="cpubar" class="determinate" style="width: 0%"></div>
+								</div>
+							</div>
+							<div class="col s12">
+								<p>Available Ram: <span id="ram">0</span> MB</p>
+							</div>
+						</div>
+					</div>					
+				</div>	
+			</div>
+
+			<div class="col s6">
+				<div class="card small multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">Web Crawler Stats</span>						
+						<table class="highlight responsive-table">	
+							<tbody>
+								<tr>
+									<td>Urls In Queue</td>
+									<td><span id="totalurlqueue">0</span> (CNN: <span id="cnnurlqueue">0</span>, SI: <span id="siurlqueue">0</span>)</td>																	
+								</tr>
+								<tr>
+									<td>Crawled Urls</td>
+									<td><span id="crawledurls">0</span></td>									
+								</tr>
+								<tr>
+									<td>Entities In Table</td>
+									<td><span id="tableentities">0</span></td>									
+								</tr>
+							</tbody>
+						</table>
+					</div>					
+				</div>	
+			</div>
+
+		</div>    
+	</div>
+
+	<div class="container center">
+		<div class="row">
+			<div class="col s3"></div>
+			<div class="col s6">
+				<div class="card multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">Web Crawler Controller</span>
+						<div class="row">
+							<div class="col s6">
+								<a id="startbtn" onclick="sendCommand('start')" class="waves-effect waves-light btn green"><i class="material-icons left">play_arrow</i>Start</a>
+							</div>
+							<div class="col s6">
+								<a id="stopbtn" onclick="sendCommand('stop')" class="waves-effect waves-light btn red"><i class="material-icons right">stop</i>Stop</a>
+							</div>
+						</div>
+						<br/>
+						<a class="waves-effect waves-light btn pink darken-4" id="restartbtn" onclick="reset()"><i class="material-icons left">replay</i>restart</a>
+					</div>					
+				</div>
+			</div>
+			<div class="col s3"></div>
+		</div>
+	</div>
+
+	<div class="container center">
+		<div class="card multicolored-title">			
+			<div class="card-content white-text">											
+				<span class="card-title">Threads Overview</span>				
+			</div>					
+		</div>
+	</div>
+
+	<div class="container center">
+		<div class="row">
+			<div class="col s12 m12 l6">
+				<div class="card multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">CNN Thread 1</span>
+						<div class="divider"></div>
+						<p><strong>"<span id="cnnthread1name">MEM_NAME"</span></strong></p>
+						<p>State: <em><span id="cnnthread1state">Stopped</span></em></p>						
+						<p>Crawled Url:</p>
+						<p><span id="cnnthread1urlcrawled">https://okay.com</span></p>
+					</div>					
+				</div>
+			</div>
+			<div class="col s12 m12 l6">
+				<div class="card multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">CNN Thread 2</span>
+						<div class="divider"></div>
+						<p><strong>"<span id="cnnthread2name">MEM_NAME"</span></strong></p>
+						<p>State: <em><span id="cnnthread2state">Stopped</span></em></p>						
+						<p>Crawled Url:</p>
+						<p><span id="cnnthread2urlcrawled">https://okay.com</span></p>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 l6">
+				<div class="card multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">Sports Illustrated Thread 1</span>
+						<div class="divider"></div>
+						<p><strong>"<span id="sithread1name">MEM_NAME"</span></strong></p>
+						<p>State: <em><span id="sithread1state">Stopped</span></em></p>						
+						<p>Crawled Url:</p>
+						<p><span id="sithread1urlcrawled">https://okay.com</span></p>
+					</div>					
+				</div>
+			</div>
+			<div class="col s12 m12 l6">
+				<div class="card multicolored hoverable">			
+					<div class="card-content white-text">											
+						<span class="card-title">Sports Illustrated Thread 2</span>
+						<div class="divider"></div>
+						<p><strong>"<span id="sithread2name">MEM_NAME"</span></strong></p>
+						<p>State: <em><span id="sithread2state">Stopped</span></em></p>						
+						<p>Crawled Url:</p>
+						<p><span id="sithread2urlcrawled">https://okay.com</span></p>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container center">
+		<div class="card multicolored-title">			
+			<div class="card-content white-text">											
+				<span class="card-title">Logs Transmission</span>
+			</div>					
+		</div>
+	</div>
+
+	<div class="container center">
+		<div class="row">
+			<div class="col s12">
+				<ul class="tabs light-blue accent-2 white-text">
+					<li class="tab col s3"><a class="active" href="#genlog">General Logs</a></li>
+					<li class="tab col s3"><a href="#cnnlog">CNN Logs</a></li>
+					<li class="tab col s3"><a href="#silog">Sports Illustrated Logs</a></li>
+					<li class="tab col s3"><a href="#errlog">Error Logs</a></li>
+				</ul>
+			</div>
+			<div id="genlog" class="col s12">
+				<textarea id="genlogtext" class="white" name="message" rows="10" cols="100" style="height:480px" placeholder="General Log Reports"></textarea>
+			</div>
+			<div id="cnnlog" class="col s12">
+				<textarea id="cnnlogtext" class="white" name="message" rows="10" cols="100" style="height:480px" placeholder="CNN Log Reports"></textarea>
+			</div>
+			<div id="silog" class="col s12">
+				<textarea id="silogtext" class="white" name="message" rows="10" cols="100" style="height:480px" placeholder="SI Log Reports"></textarea>
+			</div>
+			<div id="errlog" class="col s12">
+				<textarea id="errlogtext" class="white" name="message" rows="10" cols="100" style="height:480px" placeholder="Error Log Reports"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="container center">		
+		<div class="card multicolored-title">
+			<div class="card-content white-text">											
+				<span class="card-title"><strong>Trie Structure Overview</strong></span>
+			</div>					
+		</div>			    
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="card multicolored" style="height: 150px;">
+					<div class="card-content white-text">											
+						<span class="card-title"><strong>CPU Usage:</strong> <span id="triecpu">0</span>%</span>
+						<div class="row left-align">							
+							<div class="col s12">
+								<div class="progress" style="height: 50px;">
+									<div id="triecpubar" class="determinate" style="width: 0%;"></div>
+								</div>
+							</div>							
+						</div>
+					</div>					
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="card multicolored center" style="height: 150px;">
+					<div class="card-content white-text">											
+						<span class="card-title"><strong>Memory Usage</strong></span>
+						<div class="row">							
+							<div class="col s12">
+								<h5><span id="trieram">0</span> MB</h5>
+							</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">			
+			<div class="col s12 m6">
+				<div class="card medium multicolored">
+					<div class="card-content white-text">											
+						<span class="card-title"><strong>Trie Statistics</strong></span>
+						<table class="centered" style="height: 50px;">
+							<thead>
+								<tr>
+									<th>Trie Data State: </th>
+									<th>Popularity Count Data State: </th>									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span id="triedatastate">Uninitialized</span></td>
+									<td><span id="popcountdatastate">Uninitialized</span> (<span id="popcountdone">0</span>/<span id="popcountlist">0</span>)</td>									
+								</tr>								
+							</tbody>
+						</table>						
+						<br/>
+						<div class="divider"></div>
+						<br/>						
+						<p class="right-align">(Number of stored data in trie / Number of Collected Data in Wiki File)</p>
+						<div class="progress" style="height: 20px;">
+							<div id="triestoreddatabar" class="determinate" style="width: 0%;"></div>
+						</div>
+						<p class="left-align"><span id="triestoreddata">0</span>/<span id="triecollecteddata">0</span></p>
+						<br/>
+						<div class="divider"></div>
+						<br/>							
+					</div>					
+				</div>
+			</div>
+			<div class="col s12 m6">				
+				<div class="card medium multicolored center">
+					<div class="card-content white-text">											
+						<span class="card-title"><strong>Top 5 Most Recently Searched Data By User</strong></span>
+						<br/>
+						<br/>
+						<div class="container">		
+						    <ul id="recentlysearchdata" class="collection blue-text">						     
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="center">							
+			<a id="triestartstoring" onclick="startTrieStoring()" class="waves-effect waves-light btn-large deep-purple darken-2">Start storing to Trie</a>
+			<a id="configurepopcount" onclick="configurePopularityCount()" class="waves-effect waves-light btn-large indigo darken-2">Start configuring popularity</a>							
+		</div>
+	</div>
+
+	<div class="container center">
+		<div class="card multicolored-title">			
+			<div class="card-content white-text">											
+				<span class="card-title">Trie Error Log Transmission</span>
+			</div>					
+		</div>
+	</div>
+
+	<div class="container center">
+		<div class="col s12">
+			<textarea id="trielogreport" class="white" name="message" rows="10" cols="100" style="height:480px" placeholder="Trie Structure Error Logs"></textarea>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+	<script src="materialize.js"></script>
+	<script src="httprequest.js"></script>
+	<<script src="trierequest.js"></script>
+</body>
+</html>
